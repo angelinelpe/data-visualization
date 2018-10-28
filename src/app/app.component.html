@@ -1,0 +1,36 @@
+<div class="main">
+    <div class="section census">
+        <h4>Inégalité Homme/Femme</h4>
+        <p>Selectionner le graphique à afficher : </p>
+
+        <div class="option-list">
+          <button class="option" *ngFor="let option of options; index as i" (click)="displayChoice(i)"
+                  [ngClass]="{selected: option.selected}">
+            <i class="fas fa-check" *ngIf="option.selected"></i>
+            {{option.label}}
+          </button>
+        </div>
+
+        <!-- Insertion professionnelle -->
+        <div class="section data" *ngIf="this.selectedOption === 'insertionPro'">
+            <button type="button" class="btn btn-secondary sousbouton" (click)="displayGraphic('EmploiStableMaster')">Après le Master</button>
+            <button type="button" class="btn btn-secondary sousbouton" (click)="displayGraphic('EmploiStableLP')">Après la Licence Pro</button>
+        </div>
+
+        <!-- Salaire à Paris -->
+        <div class="section data" *ngIf="this.selectedOption === 'salaireParis'">
+            <button type="button" class="btn btn-secondary sousbouton" (click)="displayGraphic('SalairebrutmensuelLP')">Après le Master</button>
+            <button type="button" class="btn btn-secondary sousbouton" (click)="displayGraphic('SalairebrutmensuelMaster')">Après la Licence Pro</button>
+        </div>
+
+        <!-- Promotion à Paris -->
+        <div class="section data" *ngIf="this.selectedOption === 'promotionParis'">
+            <button type="button" class="btn btn-secondary sousbouton" (click)="displayGraphic('PromotionHF')">En général</button>
+        </div>
+
+        <div id="graphic" *ngIf="imagePath">
+            <img [src]="imagePath">
+        </div>
+    </div>
+
+</div>
